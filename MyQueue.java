@@ -1,6 +1,6 @@
-public class MyQueue
+public class MyQueue<E>
 {
-    private int[] queue;
+    private E[] queue;
     private int front;
     private int size = 0;
     
@@ -8,17 +8,17 @@ public class MyQueue
      * Constructor for objects of class MyQueue
      */
     public MyQueue() {
-        queue = new int[10];
+        queue = (E[]) new Object[10];
         front = queue.length;
     }
     
     /**
-     * Adds an integer to the back of the queue
+     * Adds an element to the back of the queue
      *
-     * @param  element  an integer to be added to the queue
+     * @param  element  an element to be added to the queue
      * @return    void
      */
-    public void enqueue(int element) {
+    public void enqueue(E element) {
         if (!isFull())
         {
             if (isEmpty()) {
@@ -33,25 +33,28 @@ public class MyQueue
             front--;
             size++;
         }
+        else {
+            System.out.println(queue[-1]);
+        }
     }
     
     /**
-     * Removes the integer at the front of the queue
+     * Removes the element at the front of the queue
      *
-     * @return    the integer removed
+     * @return    the element removed
      */
-    public int dequeue() {
+    public E dequeue() {
         if (!isEmpty()) {
-            int dequeue = queue[front];
+            E dequeue = queue[front];
             size--;
             front++;
             return dequeue;
         }
-        return -1;
+        return queue[-1];
     }
     
     /**
-     * Checks if the queue contains any values
+     * Checks if the queue contains any elements
      *
      * @return    true if empty, false if not
      */
@@ -63,16 +66,16 @@ public class MyQueue
     }
     
     /**
-     * Gives the value at the front of the queue
+     * Gives the element at the front of the queue
      *
-     * @return    the first accesible integer in the queue
+     * @return    the first accesible element in the queue
      */
-    public int front() {
+    public E front() {
         return queue[front];
     }
     
     /**
-     * Gives the number of accesible values in the queue
+     * Gives the number of accesible elements in the queue
      *
      * @return    the size of the queue
      */
@@ -93,7 +96,7 @@ public class MyQueue
     }
     
     /**
-     * Prints the values in the queue starting from the front
+     * Prints the elements in the queue starting from the front
      *
      * @return    a formatted version of the queue
      */

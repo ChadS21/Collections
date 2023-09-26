@@ -2,9 +2,8 @@ public class collectionTest
 {
     public void stackTest()
     {
-        MyStack stack = new MyStack();
+        MyStack<Integer> stack = new MyStack<Integer>();
         
-        System.out.println(stack.pop());
         stack.push(213);
         System.out.println(stack);
         stack.push(13);
@@ -33,9 +32,8 @@ public class collectionTest
     
     public void queueTest()
     {
-        MyQueue queue = new MyQueue();
+        MyQueue<Integer> queue = new MyQueue<Integer>();
         
-        System.out.println(queue.dequeue());
         queue.enqueue(100);
         System.out.println(queue);
         queue.enqueue(13);
@@ -62,6 +60,28 @@ public class collectionTest
         System.out.println(queue);
         queue.enqueue(99);
         queue.enqueue(234567);
+        System.out.println(queue);
+    }
+    
+    public void stringTest()
+    {
+        MyStack<String> stack = new MyStack<String>();
+        
+        stack.push("Bottom");
+        System.out.println(stack);
+        stack.push("New");
+        System.out.println(stack);
+        stack.pop();
+        System.out.println(stack);
+        System.out.println();
+        
+        MyQueue<String> queue = new MyQueue<String>();
+        
+        queue.enqueue("Array");
+        System.out.println(queue);
+        queue.enqueue("Queue");
+        System.out.println(queue);
+        queue.dequeue();
         System.out.println(queue);
     }
 }

@@ -1,6 +1,6 @@
-public class MyStack
+public class MyStack<E>
 {
-    private int[] stack;
+    private E[] stack;
     private int size = 0;
     private int top = -1;
     
@@ -8,40 +8,43 @@ public class MyStack
      * Constructor for objects of class MyStack
      */
     public MyStack() {
-        stack = new int[10];
+        stack = (E[]) new Object[10];
     }
     
     /**
-     * Adds an integer to the top of the stack
+     * Adds an element to the top of the stack
      *
-     * @param  element  an integer to be added to the stack
+     * @param  element  an element to be added to the stack
      * @return    void
      */
-    public void push(int element) {
+    public void push(E element) {
         if (!isFull()) {
             stack[size] = element;
             size++;
             top++;
         }
+        else {
+            System.out.println(stack[-1]);
+        }
     }
     
     /**
-     * Removes the integer at the top of the stack
+     * Removes the element at the top of the stack
      *
-     * @return    the integer removed
+     * @return    the element removed
      */
-    public int pop() {
+    public E pop() {
         if (!isEmpty()) {
-            int pop = stack[top];
+            E pop = stack[top];
             size--;
             top--;
             return pop;
         }
-        return -1;
+        return stack[-1];
     }
     
     /**
-     * Checks if the stack contains any values
+     * Checks if the stack contains any elements
      *
      * @return    true if empty, false if not
      */
@@ -53,16 +56,16 @@ public class MyStack
     }
     
     /**
-     * Gives the value at the top of the stack
+     * Gives the element at the top of the stack
      *
-     * @return    the last value added to the stack
+     * @return    the last element added to the stack
      */
     public int top() {
         return top;
     }
     
     /**
-     * Gives the number of values in the stack
+     * Gives the number of elements in the stack
      *
      * @return    the size of the stack
      */
@@ -83,7 +86,7 @@ public class MyStack
     }
     
     /**
-     * Prints the values in the stack starting from the top
+     * Prints the elements in the stack starting from the top
      *
      * @return    a formatted version of the queue
      */
