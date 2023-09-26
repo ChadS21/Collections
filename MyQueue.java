@@ -9,7 +9,7 @@ public class MyQueue<E>
      */
     public MyQueue() {
         queue = (E[]) new Object[10];
-        front = queue.length;
+        front = queue.length; //Sets front out of bounds to be shifted in enqueue 
     }
     
     /**
@@ -22,11 +22,11 @@ public class MyQueue<E>
         if (!isFull())
         {
             if (isEmpty()) {
-                queue[queue.length - 1] = element;
+                queue[queue.length - 1] = element; //Adds to end if empty
             }
             else {
                 for (int i = front; i < queue.length; i++) {
-                    queue[i - 1] = queue[i];
+                    queue[i - 1] = queue[i]; //Shifts previous elements down
                     queue[i] = element;
                 }
             }
@@ -34,7 +34,7 @@ public class MyQueue<E>
             size++;
         }
         else {
-            System.out.println(queue[-1]);
+            System.out.println(queue[-1]); //Out of bounds error if full
         }
     }
     
@@ -47,10 +47,10 @@ public class MyQueue<E>
         if (!isEmpty()) {
             E dequeue = queue[front];
             size--;
-            front++;
+            front++; //Shifts front back to element after dequeued element
             return dequeue;
         }
-        return queue[-1];
+        return queue[-1]; //Out of bounds error if empty
     }
     
     /**

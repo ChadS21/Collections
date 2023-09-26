@@ -24,7 +24,7 @@ public class MyStack<E>
             top++;
         }
         else {
-            System.out.println(stack[-1]);
+            System.out.println(stack[-1]); //Out of bounds error if full
         }
     }
     
@@ -37,10 +37,10 @@ public class MyStack<E>
         if (!isEmpty()) {
             E pop = stack[top];
             size--;
-            top--;
+            top--; //Changes index from which array starts to be viewed
             return pop;
         }
-        return stack[-1];
+        return stack[-1]; //Out of bounds error if empty
     }
     
     /**
@@ -60,8 +60,8 @@ public class MyStack<E>
      *
      * @return    the last element added to the stack
      */
-    public int top() {
-        return top;
+    public E top() {
+        return stack[top];
     }
     
     /**
