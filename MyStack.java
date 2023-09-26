@@ -1,3 +1,9 @@
+/**
+ * My version of a Stack Abstract Data Type
+ * 
+ * @author Chad Sawyer
+ * @version 9/26/2023
+ */
 public class MyStack<E>
 {
     private E[] stack;

@@ -1,3 +1,9 @@
+/**
+ * My version of a Queue Abstract Data Type
+ * 
+ * @author Chad Sawyer
+ * @version 9/26/2023
+ */
 public class MyQueue<E>
 {
     private E[] queue;
