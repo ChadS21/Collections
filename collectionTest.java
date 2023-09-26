@@ -1,7 +1,6 @@
 public class collectionTest
 {
-    public void stackTest()
-    {
+    public void stackTest() {
         MyStack<Integer> stack = new MyStack<Integer>();
         
         stack.push(213);
@@ -29,8 +28,7 @@ public class collectionTest
         stack.push(2); //Out of Bounds
     }
     
-    public void queueTest()
-    {
+    public void queueTest() {
         MyQueue<Integer> queue = new MyQueue<Integer>();
         
         queue.enqueue(100);
@@ -62,8 +60,7 @@ public class collectionTest
         System.out.println(queue); //Out of Bounds
     }
     
-    public void stringTest()
-    {
+    public void stringTest() {
         MyStack<String> stack = new MyStack<String>();
         
         stack.push("Bottom");
