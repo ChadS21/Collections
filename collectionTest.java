@@ -26,8 +26,7 @@ public class collectionTest
         System.out.println(stack);
         stack.push(2);
         System.out.println(stack);
-        stack.push(2);
-        System.out.println(stack);
+        stack.push(2); //Out of Bounds
     }
     
     public void queueTest()
@@ -60,7 +59,7 @@ public class collectionTest
         System.out.println(queue);
         queue.enqueue(99);
         queue.enqueue(234567);
-        System.out.println(queue);
+        System.out.println(queue); //Out of Bounds
     }
     
     public void stringTest()
@@ -85,6 +84,6 @@ public class collectionTest
         System.out.println(queue);
         queue.dequeue();
         System.out.println(queue);
-        queue.dequeue();
+        queue.dequeue(); //Out of Bounds
     }
 }
