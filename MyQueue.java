@@ -107,9 +107,10 @@ public class MyQueue<E>
                 str += queue[i] + ", ";
             }
             else {
-                str += queue[i] + "]";
+                str += queue[i];
             }
         }
+        str += "]";
         return str;
     }
 }

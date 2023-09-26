@@ -83,5 +83,8 @@ public class collectionTest
         System.out.println(queue);
         queue.dequeue();
         System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+        queue.dequeue();
     }
 }

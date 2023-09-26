@@ -97,9 +97,10 @@ public class MyStack<E>
                 str += stack[i] + ", ";
             }
             else {
-                str += stack[i] + "]";
+                str += stack[i];
             }
         }
+        str += "]";
         return str;
     }
 }
