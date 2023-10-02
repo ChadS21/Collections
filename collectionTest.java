@@ -83,4 +83,39 @@ public class collectionTest
         System.out.println(queue);
         queue.dequeue(); //Out of Bounds
     }
+    
+    public void linkedListTest() {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        list.removeHead();
+        list.addHead(1);
+        System.out.println(list);
+        list.addHead(2);
+        System.out.println(list);
+        list.addTail(3);
+        list.addTail(4);
+        System.out.println(list);
+        list.removeHead();
+        System.out.println(list);
+        list.removeHead();
+        list.removeHead();
+        list.addTail(5);
+        System.out.println(list);
+        
+        System.out.println();
+        
+        LinkedList<String> list2 = new LinkedList<String>();
+        list2.addHead("a");
+        System.out.println(list2);
+        list2.addHead("b");
+        System.out.println(list2);
+        list2.addTail("c");
+        list2.addTail("d");
+        System.out.println(list2);
+        list2.removeHead();
+        System.out.println(list2);
+        list2.removeHead();
+        list2.removeHead();
+        list2.addTail("e");
+        System.out.println(list2);
+    }
 }

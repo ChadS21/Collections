@@ -5,18 +5,11 @@ import java.util.EmptyStackException;
  * @author Chad Sawyer
  * @version 9/26/2023
  */
-public class MyStack<E>
+public class MyStackLL<E>
 {
-    private E[] stack;
-    private int size = 0;
+    private LinkedList stack;
+    private int elementCount = 0;
     private int top = -1;
-    
-    /**
-     * Constructor for objects of class MyStack
-     */
-    public MyStack() {
-        stack = (E[]) new Object[10];
-    }
     
     /**
      * Adds an element to the top of the stack
@@ -25,14 +18,7 @@ public class MyStack<E>
      * @return    void
      */
     public void push(E element) {
-        if (!isFull()) {
-            stack[size] = element;
-            size++;
-            top++;
-        }
-        else {
-            System.out.println(stack[-1]); //Out of bounds error if full
-        }
+        
     }
     
     /**
@@ -40,16 +26,8 @@ public class MyStack<E>
      *
      * @return    the element removed
      */
-    public E pop() throws EmptyStackException {
-        if (size == 0) {
-            throw new EmptyStackException();
-        }
-        else {
-            E pop = stack[top];
-            size--;
-            top--; //Changes index from which array starts to be viewed
-            return pop;
-        }
+    public int pop() throws EmptyStackException {
+        return 1;
     }
     
     /**
@@ -58,7 +36,8 @@ public class MyStack<E>
      * @return    true if empty, false if not
      */
     public boolean isEmpty() {
-        if (size == 0) {
+        if (elementCount == 0)
+        {
             return true;
         }
         return false;
@@ -69,8 +48,8 @@ public class MyStack<E>
      *
      * @return    the last element added to the stack
      */
-    public E top() {
-        return stack[top];
+    public int top() {
+        return 1;
     }
     
     /**
@@ -79,7 +58,7 @@ public class MyStack<E>
      * @return    the size of the stack
      */
     public int size() {
-        return size;
+        return elementCount;
     }
     
     /**
@@ -88,9 +67,6 @@ public class MyStack<E>
      * @return    true if full, false if not
      */
     public boolean isFull() {
-        if (size == stack.length) {
-            return true;
-        }
         return false;
     }
     
@@ -101,15 +77,7 @@ public class MyStack<E>
      */
     public String toString() {
         String str = "[";
-        for (int i = top; i >= 0; i--) {
-            if (i > 0) {
-                str += stack[i] + ", ";
-            }
-            else {
-                str += stack[i];
-            }
-        }
-        str += "]";
+        
         return str;
     }
 }
