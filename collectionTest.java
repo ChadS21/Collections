@@ -84,6 +84,30 @@ public class collectionTest
         queue.dequeue(); //Out of Bounds
     }
     
+    public void stringTestLL() {
+        MyStackLL<String> stack = new MyStackLL<String>();
+        
+        stack.push("Bottom");
+        System.out.println(stack);
+        stack.push("New");
+        System.out.println(stack);
+        stack.pop();
+        System.out.println(stack);
+        System.out.println();
+        
+        MyQueueLL<String> queue = new MyQueueLL<String>();
+        
+        queue.enqueue("Array");
+        System.out.println(queue);
+        queue.enqueue("Queue");
+        System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+        queue.dequeue(); //Out of Bounds
+    }
+    
     public void linkedListTest() {
         LinkedList<Integer> list = new LinkedList<Integer>();
         list.removeHead();

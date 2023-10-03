@@ -6,17 +6,9 @@
  */
 public class MyQueueLL<E>
 {
-    private int[] queue;
-    private int front;
+    private LinkedList<E> queue = new LinkedList<E>();
+    private E front;
     private int size = 0;
-    
-    /**
-     * Constructor for objects of class MyQueue
-     */
-    public MyQueueLL() {
-        queue = new int[10];
-        front = queue.length; //Sets front out of bounds to be shifted in enqueue 
-    }
     
     /**
      * Adds an element to the back of the queue
@@ -24,24 +16,10 @@ public class MyQueueLL<E>
      * @param  element  an element to be added to the queue
      * @return    void
      */
-    public void enqueue(int element) {
-        if (!isFull())
-        {
-            if (isEmpty()) {
-                queue[queue.length - 1] = element; //Adds to end if empty
-            }
-            else {
-                for (int i = front; i < queue.length; i++) {
-                    queue[i - 1] = queue[i]; //Shifts previous elements down
-                    queue[i] = element;
-                }
-            }
-            front--;
-            size++;
-        }
-        else {
-            System.out.println(queue[-1]); //Out of bounds error if full
-        }
+    public void enqueue(E element) {
+        front = element;
+        queue.addTail(element);
+        size++;
     }
     
     /**
@@ -49,14 +27,11 @@ public class MyQueueLL<E>
      *
      * @return    the element removed
      */
-    public int dequeue() {
-        if (!isEmpty()) {
-            int dequeue = queue[front];
-            size--;
-            front++; //Shifts front back to element after dequeued element
-            return dequeue;
-        }
-        return queue[-1]; //Out of bounds error if empty
+    public E dequeue() {
+        E dequeue = front;
+        queue.removeHead();
+        size--;
+        return dequeue;
     }
     
     /**
@@ -76,8 +51,8 @@ public class MyQueueLL<E>
      *
      * @return    the first accesible element in the queue
      */
-    public int front() {
-        return queue[front];
+    public E front() {
+        return front;
     }
     
     /**
@@ -88,35 +63,13 @@ public class MyQueueLL<E>
     public int size() {
         return size;
     }
-    
-    /**
-     * Checks if the queue has any open spaces
-     *
-     * @return    true if full, false if not
-     */
-    public boolean isFull() {
-        if (front == 0) {
-            return true;
-        }
-        return false;
-    }
-    
+
     /**
      * Prints the elements in the queue starting from the front
      *
      * @return    a formatted version of the queue
      */
     public String toString() {
-        String str = "[";
-        for (int i = front; i < front + size; i++) {
-            if (i < front + size - 1) {
-                str += queue[i] + ", ";
-            }
-            else {
-                str += queue[i];
-            }
-        }
-        str += "]";
-        return str;
+        return queue.toString();
     }
 }

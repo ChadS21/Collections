@@ -7,14 +7,15 @@
  */
 public class LinkedList<E>
 {
-    private Node head;
-    private int size = 0;
+    private Node<E> head;
+    private int size;
 
     /**
      * Constructor for objects of class LinkedList
      */
     public LinkedList() {
         head = null;
+        size = 0;
     }
 
     /**
@@ -25,7 +26,7 @@ public class LinkedList<E>
      * @return    void
      */
     public void addHead(E data) {
-        Node newNode = new Node(data);
+        Node<E> newNode = new Node<E>(data);
         
         if (head == null) {
             head = newNode;
@@ -47,8 +48,9 @@ public class LinkedList<E>
         if (head == null) {
             addHead(data);
         } else {
-            Node newNode = new Node(data);
-            Node currNode = head;
+            Node<E> newNode = new Node<E>(data);
+            Node<E> currNode = head;
+            
             while (currNode.getNext() != null) {
                 currNode = currNode.getNext();
             }
@@ -62,8 +64,8 @@ public class LinkedList<E>
      *
      * @return    the first Node in the Linked List
      */
-    public Node getHead() {
-        return head;
+    public E getHead() {
+        return head.getData();
     }
     
     /**
@@ -71,13 +73,13 @@ public class LinkedList<E>
      *
      * @return    void
      */
-    public void removeHead() {
+    public E removeHead() {
+        E remove = getHead();
         if (!isEmpty()) {
-            Node newHead = head.getNext();
-            head.setNext(head.getNext().getNext());
-            head = newHead;
+            head = head.getNext();
             size--;
         }
+        return remove;
     }
     
     /**
@@ -109,10 +111,11 @@ public class LinkedList<E>
      */
     public String toString() {
         String str = "[";
-        Node currNode = head;
+        Node<E> currNode = head;
         
         while (currNode != null) {
             str += currNode.getData();
+            
             if (currNode.getNext() != null) {
                 str += ", ";
             }

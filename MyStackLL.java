@@ -1,4 +1,3 @@
-import java.util.EmptyStackException;
 /**
  * My version of a Stack Abstract Data Type
  * 
@@ -7,9 +6,9 @@ import java.util.EmptyStackException;
  */
 public class MyStackLL<E>
 {
-    private LinkedList stack;
-    private int elementCount = 0;
-    private int top = -1;
+    private LinkedList<E> stack = new LinkedList<E>();
+    private int size = 0;
+    private E top;
     
     /**
      * Adds an element to the top of the stack
@@ -18,7 +17,9 @@ public class MyStackLL<E>
      * @return    void
      */
     public void push(E element) {
-        
+        top = element;
+        stack.addHead(element);
+        size++;
     }
     
     /**
@@ -26,8 +27,12 @@ public class MyStackLL<E>
      *
      * @return    the element removed
      */
-    public int pop() throws EmptyStackException {
-        return 1;
+    public E pop() {
+        E pop = top;
+        stack.removeHead();
+        top = stack.getHead();
+        size--;
+        return pop;
     }
     
     /**
@@ -36,7 +41,7 @@ public class MyStackLL<E>
      * @return    true if empty, false if not
      */
     public boolean isEmpty() {
-        if (elementCount == 0)
+        if (stack.isEmpty())
         {
             return true;
         }
@@ -48,8 +53,8 @@ public class MyStackLL<E>
      *
      * @return    the last element added to the stack
      */
-    public int top() {
-        return 1;
+    public E top() {
+        return top;
     }
     
     /**
@@ -58,7 +63,7 @@ public class MyStackLL<E>
      * @return    the size of the stack
      */
     public int size() {
-        return elementCount;
+        return size;
     }
     
     /**
@@ -76,8 +81,6 @@ public class MyStackLL<E>
      * @return    a formatted version of the queue
      */
     public String toString() {
-        String str = "[";
-        
-        return str;
+        return stack.toString();
     }
 }
