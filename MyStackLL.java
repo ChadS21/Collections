@@ -8,7 +8,6 @@ public class MyStackLL<E>
 {
     private LinkedList<E> stack = new LinkedList<E>();
     private int size = 0;
-    private E top;
     
     /**
      * Adds an element to the top of the stack
@@ -17,7 +16,6 @@ public class MyStackLL<E>
      * @return    void
      */
     public void push(E element) {
-        top = element;
         stack.addHead(element);
         size++;
     }
@@ -28,11 +26,11 @@ public class MyStackLL<E>
      * @return    the element removed
      */
     public E pop() {
-        E pop = top;
-        stack.removeHead();
-        top = stack.getHead();
-        size--;
-        return pop;
+        if (!isEmpty()) {
+            size--;
+            return stack.removeHead();
+        }
+        return null;
     }
     
     /**
@@ -54,7 +52,7 @@ public class MyStackLL<E>
      * @return    the last element added to the stack
      */
     public E top() {
-        return top;
+        return stack.getHead();
     }
     
     /**
