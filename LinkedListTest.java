@@ -61,7 +61,20 @@ public class LinkedListTest
     
     public void reverseTest()
     {
-        MyQueueLL<Integer> stack = new MyQueueLL<Integer>();
-        
+        MyQueueLL<Integer> queue = new MyQueueLL<Integer>();
+        MyStackLL<Integer> tempStack = new MyStackLL<Integer>();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        System.out.println(queue);
+        while (!queue.isEmpty())
+        {
+            tempStack.push(queue.dequeue());
+        }
+        while (!tempStack.isEmpty())
+        {
+            queue.enqueue(tempStack.pop());
+        }
+        System.out.println(queue);
     }
 }

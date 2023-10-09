@@ -110,7 +110,7 @@ public class collectionTest
     
     public void linkedListTest() {
         LinkedList<Integer> list = new LinkedList<Integer>();
-        list.removeHead();
+
         list.addHead(1);
         System.out.println(list);
         list.addHead(2);

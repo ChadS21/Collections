@@ -39,11 +39,7 @@ public class MyStackLL<E>
      * @return    true if empty, false if not
      */
     public boolean isEmpty() {
-        if (stack.isEmpty())
-        {
-            return true;
-        }
-        return false;
+        return stack.isEmpty();
     }
     
     /**

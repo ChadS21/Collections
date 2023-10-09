@@ -74,12 +74,12 @@ public class LinkedList<E>
      * @return    void
      */
     public E removeHead() {
-        E remove = getHead();
+        E removed = getHead();
         if (!isEmpty()) {
             head = head.getNext();
             size--;
         }
-        return remove;
+        return removed;
     }
     
     /**
@@ -88,10 +88,7 @@ public class LinkedList<E>
      * @return    If the list contains Nodes or not
      */
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
     
     /**

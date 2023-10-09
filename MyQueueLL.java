@@ -7,7 +7,6 @@
 public class MyQueueLL<E>
 {
     private LinkedList<E> queue = new LinkedList<E>();
-    private E front;
     private int size = 0;
     
     /**
@@ -17,7 +16,6 @@ public class MyQueueLL<E>
      * @return    void
      */
     public void enqueue(E element) {
-        front = element;
         queue.addTail(element);
         size++;
     }
@@ -28,7 +26,7 @@ public class MyQueueLL<E>
      * @return    the element removed
      */
     public E dequeue() {
-        E dequeue = front;
+        E dequeue = front();
         queue.removeHead();
         size--;
         return dequeue;
@@ -40,10 +38,7 @@ public class MyQueueLL<E>
      * @return    true if empty, false if not
      */
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return queue.isEmpty();
     }
     
     /**
@@ -52,7 +47,7 @@ public class MyQueueLL<E>
      * @return    the first accesible element in the queue
      */
     public E front() {
-        return front;
+        return queue.getHead();
     }
     
     /**
