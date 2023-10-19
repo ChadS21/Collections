@@ -1,5 +1,32 @@
 public class collectionTest
 {
+    public void newLinkedListTest() {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+
+        list.add(0, 3);
+        System.out.println(list);
+        list.add(0,1);
+        System.out.println(list);
+        list.add(1,2);
+        System.out.println(list);
+        list.remove(1);
+        System.out.println(list);
+        
+        System.out.println();
+        
+        LinkedList<String> list2 = new LinkedList<String>();
+        list2.add(0, "c");
+        System.out.println(list2);
+        list2.add(0,"a");
+        System.out.println(list2);
+        list2.add(1,"b");
+        System.out.println(list2);
+        list2.remove(1);
+        System.out.println(list2.get(1)); //?
+        System.out.println(list2);
+        System.out.println(list2);
+    }
+    
     public void stackTest() {
         MyStack<Integer> stack = new MyStack<Integer>();
         

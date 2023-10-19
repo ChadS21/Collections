@@ -1,13 +1,14 @@
-
+import java.util.NoSuchElementException;
 /**
- * Write a description of class LinkedList here.
+ * My version of a Linked List data structure
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Chad Sawyer
+ * @version 10/19/2023
  */
 public class LinkedList<E>
 {
     private Node<E> head;
+    private Node<E> tail;
     private int size;
 
     /**
@@ -30,6 +31,7 @@ public class LinkedList<E>
         
         if (head == null) {
             head = newNode;
+            tail = newNode;
             size++;
         } else {
             newNode.setNext(head);
@@ -49,18 +51,14 @@ public class LinkedList<E>
             addHead(data);
         } else {
             Node<E> newNode = new Node<E>(data);
-            Node<E> currNode = head;
-            
-            while (currNode.getNext() != null) {
-                currNode = currNode.getNext();
-            }
-            currNode.setNext(newNode);
+            tail.setNext(newNode); 
+            tail = newNode;
             size++;
         }
     }
     
     /**
-     * Returns the Linked List's first Node
+     * Returns the Linked List's first Node's data
      *
      * @return    the first Node in the Linked List
      */
@@ -69,7 +67,7 @@ public class LinkedList<E>
     }
     
     /**
-     * if the Linked List contains Nodes, removes the first Node in the list
+     * If the Linked List contains Nodes, removes the first Node in the list
      *
      * @return    void
      */
@@ -80,6 +78,77 @@ public class LinkedList<E>
             size--;
         }
         return removed;
+    }
+    
+    public E get(int index) throws NoSuchElementException {
+        if (index >= size || index < 0) {
+            throw new NoSuchElementException();
+        }
+        if (index == size) {
+            return tail.getData();
+        }
+        else if (index == 0) {
+            return head.getData();
+        }
+        else {
+            Node<E> currNode = head;
+            for (int i = 0; i < index; i++) {
+                currNode = currNode.getNext();
+            }
+            return currNode.getData();
+        }
+    }
+    
+    public E remove(int index) throws NoSuchElementException {
+        if (index >= size || index < 0) {
+            throw new NoSuchElementException();
+        }
+        if (index == 0){
+            return removeHead();
+        }
+        else if (index == size - 1){
+            Node<E> currNode = head;
+            Node<E> remove = tail;
+            for (int i = 0; i < index - 1; i++) {
+                currNode = currNode.getNext();
+            }
+            currNode.setNext(null);
+            tail = currNode;
+            return remove.getData();
+        }
+        else {
+            Node<E> currNode = head;
+            for (int i = 0; i < index - 1; i++) {
+                currNode = currNode.getNext();
+            }
+            Node<E> remove = currNode.getNext();
+            currNode.setNext(currNode.getNext().getNext());
+            return remove.getData();
+        }
+    }
+    
+    public void add(int index, E element) throws NoSuchElementException {
+        if (index > size || index < 0) {
+            throw new NoSuchElementException();
+        }
+        if (index == size)
+        {
+            addTail(element);
+        }
+        else if (index == 0)
+        {
+            addHead(element);
+        }
+        else {
+            Node<E> currNode = head;
+            for (int i = 0; i < index - 1; i++)
+            {
+                currNode = currNode.getNext();
+            }
+            Node<E> newNode = new Node<E>(element);
+            newNode.setNext(currNode.getNext());
+            currNode.setNext(newNode);
+        }
     }
     
     /**
