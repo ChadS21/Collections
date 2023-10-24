@@ -265,7 +265,7 @@ public class LinkedList<E extends Comparable<E>>
      * @return    the sum of x and y
      */
     public String toString() {
-        String str = "[";
+        String str = "";
         Node<E> currNode = head;
         
         while (currNode != null) {
@@ -276,7 +276,6 @@ public class LinkedList<E extends Comparable<E>>
             }
             currNode = currNode.getNext();
         }
-        str += "]";
         return str;
     }
 }
