@@ -4,7 +4,7 @@
  * @author Chad Sawyer
  * @version 9/26/2023
  */
-public class MyQueueLL<E>
+public class MyQueueLL<E extends Comparable<E>>
 {
     private LinkedList<E> queue = new LinkedList<E>();
     private int size = 0;
@@ -16,7 +16,7 @@ public class MyQueueLL<E>
      * @return    void
      */
     public void enqueue(E element) {
-        queue.addTail(element);
+        queue.add(element);
         size++;
     }
     

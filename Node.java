@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Node<E>
+public class Node<E extends Comparable<E>>
 {
     private E data;
     private Node<E> next;

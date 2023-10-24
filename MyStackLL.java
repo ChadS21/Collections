@@ -4,7 +4,7 @@
  * @author Chad Sawyer
  * @version 9/26/2023
  */
-public class MyStackLL<E>
+public class MyStackLL<E extends Comparable<E>>
 {
     private LinkedList<E> stack = new LinkedList<E>();
     private int size = 0;

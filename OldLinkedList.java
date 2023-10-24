@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class OldLinkedList<E>
+public class OldLinkedList<E extends Comparable<E>>
 {
     private Node<E> head;
     private int size;

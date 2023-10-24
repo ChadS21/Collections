@@ -142,14 +142,14 @@ public class collectionTest
         System.out.println(list);
         list.addHead(2);
         System.out.println(list);
-        list.addTail(3);
-        list.addTail(4);
+        list.add(3);
+        list.add(4);
         System.out.println(list);
         list.removeHead();
         System.out.println(list);
         list.removeHead();
         list.removeHead();
-        list.addTail(5);
+        list.add(5);
         System.out.println(list);
         
         System.out.println();
@@ -159,14 +159,38 @@ public class collectionTest
         System.out.println(list2);
         list2.addHead("b");
         System.out.println(list2);
-        list2.addTail("c");
-        list2.addTail("d");
+        list2.add("c");
+        list2.add("d");
         System.out.println(list2);
         list2.removeHead();
         System.out.println(list2);
         list2.removeHead();
         list2.removeHead();
-        list2.addTail("e");
+        list2.add("e");
         System.out.println(list2);
+    }
+    
+    public void sortedInsertTest() {
+        LinkedList<String> list = new LinkedList<String>();
+        list.add("z");
+        System.out.println(list);
+        list.add("c");
+        System.out.println(list);
+        list.add(1, "b");
+        System.out.println(list);
+        list.add("d");
+        System.out.println(list);
+        list.remove(3);
+        System.out.println(list);
+        list.set(0, "a");
+        System.out.println(list);
+        list.insertSorted("e");
+        System.out.println(list);
+        list.insertSorted("d");
+        System.out.println(list);
+        list.remove(0);
+        System.out.println(list);
+        list.insertSorted("a");
+        System.out.println(list);
     }
 }
