@@ -6,7 +6,7 @@
  */
 public class MyQueueLL<E extends Comparable<E>>
 {
-    private LinkedList<E> queue = new LinkedList<E>();
+    private MyLinkedList<E> queue = new MyLinkedList<E>();
     private int size = 0;
     
     /**

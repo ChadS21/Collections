@@ -6,7 +6,7 @@
  */
 public class MyStackLL<E extends Comparable<E>>
 {
-    private LinkedList<E> stack = new LinkedList<E>();
+    private MyLinkedList<E> stack = new MyLinkedList<E>();
     private int size = 0;
     
     /**

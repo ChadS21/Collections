@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
  * @author Chad Sawyer
  * @version 10/24/2023
  */
-public class LinkedList<E extends Comparable<E>> 
+public class MyLinkedList<E extends Comparable<E>> 
 {
     private Node<E> head;
     private Node<E> tail;
@@ -14,7 +14,7 @@ public class LinkedList<E extends Comparable<E>>
     /**
      * Constructor for objects of class LinkedList
      */
-    public LinkedList() {
+    public MyLinkedList() {
         head = null;
         size = 0;
     }

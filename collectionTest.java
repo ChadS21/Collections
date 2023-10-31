@@ -1,7 +1,7 @@
 public class collectionTest
 {
-    public void newLinkedListTest() {
-        LinkedList<Integer> list = new LinkedList<Integer>();
+    public void newMyLinkedListTest() {
+        MyLinkedList<Integer> list = new MyLinkedList<Integer>();
 
         list.add(0, 3);
         System.out.println(list);
@@ -14,7 +14,7 @@ public class collectionTest
         
         System.out.println();
         
-        LinkedList<String> list2 = new LinkedList<String>();
+        MyLinkedList<String> list2 = new MyLinkedList<String>();
         list2.add(0, "c");
         System.out.println(list2);
         list2.add(0,"a");
@@ -135,8 +135,8 @@ public class collectionTest
         queue.dequeue(); //Out of Bounds
     }
     
-    public void linkedListTest() {
-        LinkedList<Integer> list = new LinkedList<Integer>();
+    public void MyLinkedListTest() {
+        MyLinkedList<Integer> list = new MyLinkedList<Integer>();
 
         list.addHead(1);
         System.out.println(list);
@@ -154,7 +154,7 @@ public class collectionTest
         
         System.out.println();
         
-        LinkedList<String> list2 = new LinkedList<String>();
+        MyLinkedList<String> list2 = new MyLinkedList<String>();
         list2.addHead("a");
         System.out.println(list2);
         list2.addHead("b");
@@ -171,7 +171,7 @@ public class collectionTest
     }
     
     public void sortedInsertTest() {
-        LinkedList<String> list = new LinkedList<String>();
+        MyLinkedList<String> list = new MyLinkedList<String>();
         list.add("z");
         System.out.println(list);
         list.add("c");
