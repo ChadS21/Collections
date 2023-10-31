@@ -192,5 +192,11 @@ public class collectionTest
         System.out.println(list);
         list.insertSorted("a");
         System.out.println(list);
+        list.remove(1);
+        System.out.println(list);
+        list.insertSorted("b");
+        System.out.println(list);
+        list.remove("e");
+        System.out.println(list);
     }
 }

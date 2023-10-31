@@ -136,7 +136,7 @@ public class MyLinkedList<E extends Comparable<E>>
         currNode = currNode.getNext();
         Node prevNode = head;
         
-        for (int i = 1; i < size - 1; i++) {
+        for (int i = 1; i < size; i++) {
             if (insert.getData().compareTo(currNode.getData()) < 0) {
                 prevNode.setNext(insert);
                 insert.setNext(currNode);
@@ -193,7 +193,7 @@ public class MyLinkedList<E extends Comparable<E>>
      * @return   data of the Node removed
      */
     public E remove(int index) throws NoSuchElementException {
-        if (index >= size || index < 0) {
+        if (index >= size || index < 0 || (index == 0 && head == null)) {
             throw new NoSuchElementException();
         }
         
@@ -208,6 +208,7 @@ public class MyLinkedList<E extends Comparable<E>>
             }
             currNode.setNext(null);
             tail = currNode;
+            size--;
             return remove.getData();
         } else {
             Node<E> currNode = head;
@@ -217,8 +218,30 @@ public class MyLinkedList<E extends Comparable<E>>
             }
             Node<E> remove = currNode.getNext();
             currNode.setNext(currNode.getNext().getNext());
+            size--;
             return remove.getData();
         }
+    }
+    
+    /**
+     * Removes the Node containing element and returns its data.
+     * If index out of bounds or list doesn't contain element, throws exception.
+     *
+     * @param  element element to be removed
+     * @return   data of the Node removed
+     */
+    public E remove(E element) throws NoSuchElementException {
+        if (head == null) {
+            throw new NoSuchElementException();
+        }
+        for (int i = 0; i < size; i++)
+        {
+            if (get(i).equals(element))
+            {
+                return remove(i);
+            }
+        }
+        throw new NoSuchElementException();
     }
     
     /**

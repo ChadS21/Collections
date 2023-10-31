@@ -27,27 +27,42 @@ public class Castaway
     
     public int compareTo(Castaway other) {
         if (lName.compareTo(other.lName) == 0) {
-            if (fName.compareTo(other.fName) <= 0) {
+            if (fName.compareTo(other.fName) == 0) {
+                return 0;
+            }
+            else if (fName.compareTo(other.fName) < 0) {
                 return -1;
             }
-            return 1;
-        } else if (lName.compareTo(other.lName) > 0) {
-            return 1;
-        } else {
+            else {
+                return 1;
+            }
+        } else if (lName.compareTo(other.lName) < 0) {
             return -1;
+        } else {
+            return 1;
         }
     }
     
     public boolean equals(Castaway other) {
-        return true;
+        if (fName.equals(other.fName) && lName.equals(other.lName) &&
+                theScore == other.theScore && theGender.equals(other.theGender)) {
+            return true;
+        }
+        return false;
     }
     
     public String toString() {
-        String str = "";
-        return str;
+        return lName + ", " + fName + ", " + theScore + ", " + theGender;
     }
     
+    
     public void test() {
-        
+        Castaway castaway1 = new Castaway(1);
+        Castaway castaway2 = new Castaway(2);
+        Castaway castaway3 = new Castaway(3);
+        Castaway castaway4 = new Castaway(4);
+        Castaway castaway5 = new Castaway(5);
+        Castaway castaway6 = new Castaway(6);
+        Castaway castaway7 = new Castaway(7);
     }
 }
