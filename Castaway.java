@@ -27,19 +27,9 @@ public class Castaway
     
     public int compareTo(Castaway other) {
         if (lName.compareTo(other.lName) == 0) {
-            if (fName.compareTo(other.fName) == 0) {
-                return 0;
-            }
-            else if (fName.compareTo(other.fName) < 0) {
-                return -1;
-            }
-            else {
-                return 1;
-            }
-        } else if (lName.compareTo(other.lName) < 0) {
-            return -1;
+            return fName.compareTo(other.fName);
         } else {
-            return 1;
+            return lName.compareTo(other.lName);
         }
     }
     

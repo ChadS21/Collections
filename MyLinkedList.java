@@ -241,7 +241,7 @@ public class MyLinkedList<E extends Comparable<E>>
                 return remove(i);
             }
         }
-        throw new NoSuchElementException();
+        return null;
     }
     
     /**
