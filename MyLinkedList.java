@@ -241,9 +241,6 @@ public class MyLinkedList<E extends Comparable<E>>
      * @return   data of the Node removed
      */
     public E remove(E element) throws NoSuchElementException {
-        if (head == null) {
-            throw new NoSuchElementException();
-        }
         for (int i = 0; i < size; i++)
         {
             if (get(i).equals(element))
