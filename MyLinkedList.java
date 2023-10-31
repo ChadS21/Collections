@@ -70,21 +70,13 @@ public class MyLinkedList<E extends Comparable<E>>
     }
     
     /**
-     * If there is a head, inserts a new Node after the final Node in the Linked List.
-     * Otherwise, call addHead(data).
+     * Calls add(E data)
      *
      * @param  data  the element contained by the new Node added
      * @return    void
      */
     public void addTail(E data) {
-        if (head == null) {
-            addHead(data);
-        } else {
-            Node<E> newNode = new Node<E>(data);
-            tail.setNext(newNode); 
-            tail = newNode;
-            size++;
-        }
+        add(data);
     }
     
     /**
