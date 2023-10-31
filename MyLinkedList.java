@@ -177,11 +177,11 @@ public class MyLinkedList<E extends Comparable<E>>
      * @return  data of the Node at index
      */
     public E get(int index) throws NoSuchElementException {
-        if (index >= size || index < 0) {
+        if (index >= size || index < 0 || head == null) {
             throw new NoSuchElementException();
         }
         
-        if (index == size) {
+        if (index == size - 1) {
             return tail.getData();
         } else if (index == 0) {
             return head.getData();
