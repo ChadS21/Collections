@@ -121,11 +121,10 @@ public class MyLinkedList<E extends Comparable<E>>
             Node<E> newNode = new Node<E>(element);
             Node<E> currNode = head;
             
-            for (int i = 0; i < index - 1; i++) {
+            for (int i = 0; i < index; i++) {
                 currNode = currNode.getNext();
             }
-            newNode.setNext(currNode.getNext().getNext());
-            currNode.setNext(newNode);
+            currNode.setData(element);
         }
     }
     
