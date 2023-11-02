@@ -28,11 +28,7 @@ public class Castaway implements Comparable<Castaway>
     }
     
     public boolean equals(Castaway other) {
-        if (fName.equals(other.fName) && lName.equals(other.lName) &&
-                theScore == other.theScore && theGender.equals(other.theGender)) {
-            return true;
-        }
-        return false;
+        return compareTo(other) == 0;
     }
     
     public String toString() {
@@ -53,8 +49,7 @@ public class Castaway implements Comparable<Castaway>
             list.insertSorted(new Castaway(lastName[i], firstName[i], score[i], gender[i]));
         }
         System.out.println(list);
-        Castaway compare = new Castaway(lastName[2], firstName[2], score[2], gender[2]);
-        list.remove(compare);
+        System.out.println(list.remove(new Castaway("", "Gilligan", 72, "M")));
         System.out.println(list);
     }
 }
