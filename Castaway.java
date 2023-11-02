@@ -5,24 +5,18 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Castaway
+public class Castaway implements Comparable<Castaway>
 {
-    private String[] lastName = {"", "Grumby", "Howell", "Howell", "Grant", "Hinkley",
-                                    "Summers"};
-    private String[] firstName = {"Gilligan", "Jonas", "Thurston", "Lovey", "Ginger",
-                                    "Roy", "Mary Ann"};
-    private int[] score = {72, 85, 82, 96, 90, 96, 88};
-    private String[] gender = {"M", "M", "M", "F", "F", "M", "F"};
     private String lName;
     private String fName;
     private int theScore;
     private String theGender;
 
-    public Castaway(int index) {
-        lName = lastName[index];
-        fName = firstName[index];
-        theScore = score[index];
-        theGender = gender[index];
+    public Castaway(String last, String first, int score, String gender) {
+        lName = last;
+        fName = first;
+        theScore = score;
+        theGender = gender;
     }
     
     public int compareTo(Castaway other) {
@@ -46,13 +40,21 @@ public class Castaway
     }
     
     
-    public void test() {
-        Castaway castaway1 = new Castaway(1);
-        Castaway castaway2 = new Castaway(2);
-        Castaway castaway3 = new Castaway(3);
-        Castaway castaway4 = new Castaway(4);
-        Castaway castaway5 = new Castaway(5);
-        Castaway castaway6 = new Castaway(6);
-        Castaway castaway7 = new Castaway(7);
+    public static void test() {
+        String[] lastName = {"", "Grumby", "Howell", "Howell", "Grant", "Hinkley",
+                                    "Summers"};
+        String[] firstName = {"Gilligan", "Jonas", "Thurston", "Lovey", "Ginger",
+                                        "Roy", "Mary Ann"};
+        int[] score = {72, 85, 82, 96, 90, 96, 88};
+        String[] gender = {"M", "M", "M", "F", "F", "M", "F"};
+        MyLinkedList<Castaway> list = new MyLinkedList<Castaway>();
+        for (int i = 0; i < 7; i++)
+        {
+            list.insertSorted(new Castaway(lastName[i], firstName[i], score[i], gender[i]));
+        }
+        System.out.println(list);
+        Castaway compare = new Castaway(lastName[2], firstName[2], score[2], gender[2]);
+        list.remove(compare);
+        System.out.println(list);
     }
 }

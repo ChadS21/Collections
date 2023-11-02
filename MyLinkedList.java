@@ -135,13 +135,19 @@ public class MyLinkedList<E extends Comparable<E>>
      * @return    void
      */
     public void insertSorted(E element) {
+        if (size == 0) {
+            addHead(element);
+            return;
+        }
+        
         Node insert = new Node(element);
         Node currNode = head;
-        
+
         if (insert.getData().compareTo(currNode.getData()) < 0) {
             addHead(element);
             return;
         }
+        
         currNode = currNode.getNext();
         Node prevNode = head;
         
@@ -244,6 +250,7 @@ public class MyLinkedList<E extends Comparable<E>>
         {
             if (get(i).equals(element))
             {
+                size--;
                 return remove(i);
             }
         }
