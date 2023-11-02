@@ -45,10 +45,10 @@ public class MyLinkedList<E extends Comparable<E>>
                 currNode = currNode.getNext();
             }
             Node<E> newNode = new Node<E>(element);
+            size++;
             newNode.setNext(currNode.getNext());
             currNode.setNext(newNode);
         }
-        size++;
     }
     
     /**
@@ -63,9 +63,9 @@ public class MyLinkedList<E extends Comparable<E>>
             addHead(data);
         } else {
             Node<E> newNode = new Node<E>(data);
+            size++;
             tail.setNext(newNode); 
             tail = newNode;
-            size++;
         }
     }
     
@@ -88,15 +88,14 @@ public class MyLinkedList<E extends Comparable<E>>
      */
     public void addHead(E data) {
         Node<E> newNode = new Node<E>(data);
+        size++;
         
         if (head == null) {
             head = newNode;
             tail = newNode;
-            size++;
         } else {
             newNode.setNext(head);
             head = newNode;
-            size++;
         }
     }
     
@@ -118,7 +117,6 @@ public class MyLinkedList<E extends Comparable<E>>
         } else if (index == 0) {
             head.setData(element);
         } else {
-            Node<E> newNode = new Node<E>(element);
             Node<E> currNode = head;
             
             for (int i = 0; i < index; i++) {
@@ -240,17 +238,16 @@ public class MyLinkedList<E extends Comparable<E>>
     
     /**
      * Removes the Node containing element and returns its data.
-     * If index out of bounds or list doesn't contain element, throws exception.
+     * If list doesn't contain element, returns null.
      *
      * @param  element element to be removed
      * @return   data of the Node removed
      */
-    public E remove(E element) throws NoSuchElementException {
+    public E remove(E element) {
         for (int i = 0; i < size; i++)
         {
             if (get(i).equals(element))
             {
-                size--;
                 return remove(i);
             }
         }
