@@ -27,8 +27,9 @@ public class Castaway implements Comparable<Castaway>
         }
     }
     
-    public boolean equals(Castaway other) {
-        return compareTo(other) == 0;
+    @Override
+    public boolean equals(Object other) {
+        return compareTo((Castaway) other) == 0;
     }
     
     public String toString() {
@@ -44,12 +45,13 @@ public class Castaway implements Comparable<Castaway>
         int[] score = {72, 85, 82, 96, 90, 96, 88};
         String[] gender = {"M", "M", "M", "F", "F", "M", "F"};
         MyLinkedList<Castaway> list = new MyLinkedList<Castaway>();
+        
         for (int i = 0; i < 7; i++)
         {
             list.insertSorted(new Castaway(lastName[i], firstName[i], score[i], gender[i]));
         }
         System.out.println(list);
-        System.out.println(list.remove(new Castaway("", "Gilligan", 72, "M")));
+        System.out.println(list.remove(new Castaway("", "Gilligan", 0, "")));
         System.out.println(list);
     }
 }
