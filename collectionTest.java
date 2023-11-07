@@ -197,4 +197,50 @@ public class collectionTest
         list.insertSorted("b");
         System.out.println(list);
     }
+    
+    public void getTest() {
+        MyLinkedList<String> list = new MyLinkedList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("d");
+        list.add("e");
+        
+        
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
+        System.out.println(list.get(3));
+        System.out.println(list.get(4));
+    }
+    
+    public void doublyTest() {
+         MyLinkedList<String> list = new MyLinkedList<String>();     
+         
+         list.addTail("b");
+         System.out.println(list);
+         list.add("c");
+         System.out.println(list);
+         list.add(0, "a");
+         System.out.println(list);
+         list.add(3, "e");
+         System.out.println(list);
+         list.add(3, "d");
+         System.out.println(list);
+         list.addHead("-1");
+         System.out.println(list);
+         list.remove(0);
+         System.out.println(list);
+         list.remove(4);
+         System.out.println(list);
+         list.remove(2);
+         list.remove(0);
+         System.out.println(list);
+         list.insertSorted("a");
+         list.insertSorted("c");
+         list.insertSorted("f");
+         System.out.println(list);
+         list.set(4, "e");
+         System.out.println(list);
+    }
 }

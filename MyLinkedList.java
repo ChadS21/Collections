@@ -38,16 +38,13 @@ public class MyLinkedList<E extends Comparable<E>>
         {
             addHead(element);
         } else {
-            Node<E> currNode = head;
-            
-            for (int i = 0; i < index - 1; i++)
-            {
-                currNode = currNode.getNext();
-            }
+            Node<E> currNode = finder(index - 1);   
             Node<E> newNode = new Node<E>(element);
             size++;
+            currNode.getNext().setPrev(newNode);
             newNode.setNext(currNode.getNext());
             currNode.setNext(newNode);
+            newNode.setPrev(currNode);
         }
     }
     
@@ -64,6 +61,7 @@ public class MyLinkedList<E extends Comparable<E>>
         } else {
             Node<E> newNode = new Node<E>(data);
             size++;
+            newNode.setPrev(tail);
             tail.setNext(newNode); 
             tail = newNode;
         }
@@ -95,7 +93,12 @@ public class MyLinkedList<E extends Comparable<E>>
             tail = newNode;
         } else {
             newNode.setNext(head);
+            head.setPrev(newNode);
             head = newNode;
+            if (size == 2)
+            {
+                tail = head.getNext();
+            }
         }
     }
     
@@ -117,12 +120,7 @@ public class MyLinkedList<E extends Comparable<E>>
         } else if (index == 0) {
             head.setData(element);
         } else {
-            Node<E> currNode = head;
-            
-            for (int i = 0; i < index; i++) {
-                currNode = currNode.getNext();
-            }
-            currNode.setData(element);
+            finder(index).setData(element);
         }
     }
     
@@ -146,17 +144,13 @@ public class MyLinkedList<E extends Comparable<E>>
             return;
         }
         
-        currNode = currNode.getNext();
-        Node prevNode = head;
+        currNode = head.getNext();
         
         for (int i = 1; i < size; i++) {
-            if (insert.getData().compareTo(currNode.getData()) < 0) {
-                prevNode.setNext(insert);
-                insert.setNext(currNode);
-                size++;
+            if (insert.getData().compareTo(currNode.getData()) <= 0) {
+                add(i, element);
                 return;
-            } else if (insert.getData().compareTo(currNode.getData()) > 0) {
-                prevNode = currNode;
+            } else {
                 currNode = currNode.getNext();
             }
         }
@@ -188,13 +182,8 @@ public class MyLinkedList<E extends Comparable<E>>
             return tail.getData();
         } else if (index == 0) {
             return head.getData();
-        } else {
-            Node<E> currNode = head;
-            
-            for (int i = 0; i < index; i++) {
-                currNode = currNode.getNext();
-            }
-            return currNode.getData();
+        } else {  
+            return finder(index).getData();
         }
     }
     
@@ -212,7 +201,7 @@ public class MyLinkedList<E extends Comparable<E>>
         
         if (index == 0){
             return removeHead();
-        } else if (index == size - 1){
+        } else if (index == size - 1) {
             Node<E> currNode = head;
             Node<E> remove = tail;
             
@@ -230,6 +219,7 @@ public class MyLinkedList<E extends Comparable<E>>
                 currNode = currNode.getNext();
             }
             Node<E> remove = currNode.getNext();
+            currNode.getNext().getNext().setPrev(currNode);
             currNode.setNext(currNode.getNext().getNext());
             size--;
             return remove.getData();
@@ -244,10 +234,8 @@ public class MyLinkedList<E extends Comparable<E>>
      * @return   data of the Node removed
      */
     public E remove(E element) {
-        for (int i = 0; i < size; i++)
-        {
-            if (get(i).equals(element))
-            {
+        for (int i = 0; i < size; i++) {
+            if (get(i).equals(element)) {
                 return remove(i);
             }
         }
@@ -265,12 +253,17 @@ public class MyLinkedList<E extends Comparable<E>>
         }
         
         E removed = getHead();
-        
-        if (!isEmpty()) {
+        if (size > 1) {            
             head = head.getNext();
+            head.setPrev(null);
             size--;
+            return removed;
+        } else {
+            head = null;
+            head.setPrev(null);
+            size--;
+            return removed;
         }
-        return removed;
     }   
     
     /**
@@ -289,6 +282,22 @@ public class MyLinkedList<E extends Comparable<E>>
      */
     public int size() {
         return size;
+    }
+    
+    public Node<E> finder(int index) {
+        if (index < (size / 2)) {
+            Node<E> currNode = head;
+            for (int i = 0; i < index; i++) {
+                currNode = currNode.getNext();
+            }
+            return currNode;
+        } else {
+            Node<E> currNode = tail;
+            for (int i = size - 1; i > index; i--) {
+                currNode = currNode.getPrev();
+            }
+            return currNode;
+        }
     }
     
     /**

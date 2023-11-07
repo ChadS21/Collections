@@ -9,6 +9,7 @@ public class Node<E extends Comparable<E>>
 {
     private E data;
     private Node<E> next;
+    private Node<E> prev;
 
     /**
      * Constructor for objects of class Node
@@ -17,6 +18,7 @@ public class Node<E extends Comparable<E>>
     {
         this.data = data;
         next = null;
+        prev = null;
     }
 
     /**
@@ -55,5 +57,24 @@ public class Node<E extends Comparable<E>>
      */
     public void setNext(Node<E> next) {
         this.next = next;
+    }
+    
+    /**
+     * Returns the previous Node in the Linked List
+     *
+     * @return    previous Node in the Linked List
+     */
+    public Node<E> getPrev() {
+        return prev;
+    }
+    
+    /**
+     * Sets the previous Node in a Linked List
+     *
+     * @param  prev  the Node to be set
+     * @return    void
+     */
+    public void setPrev(Node<E> prev) {
+        this.prev = prev;
     }
 }
