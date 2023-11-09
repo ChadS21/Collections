@@ -217,30 +217,40 @@ public class collectionTest
     public void doublyTest() {
          MyLinkedList<String> list = new MyLinkedList<String>();     
          
-         list.addTail("b");
+         list.addTail("c"); //add tail and add head @ empty
          System.out.println(list);
-         list.add("c");
+         list.remove("c"); //remove element, remove index, and remove head @ size = 1
          System.out.println(list);
-         list.add(0, "a");
+         list.add("c"); //add and add head @ empty
          System.out.println(list);
-         list.add(3, "e");
+         list.add("d"); //add and add tail @ size > 0
          System.out.println(list);
-         list.add(3, "d");
+         list.add(0, "b"); //add @ 0
          System.out.println(list);
-         list.addHead("-1");
+         list.add(3, "f"); //add @ size
          System.out.println(list);
-         list.remove(0);
+         list.add(3, "e"); //add @ < index <
          System.out.println(list);
-         list.remove(4);
+         list.addHead("a"); //addHead @ not empty
+         System.out.println(list);
+         list.remove(0); //remove index and remove head @ size > 1
+         System.out.println(list);
+         list.remove("f"); //remove element, remove index, and remove tail @ end
+         list.remove("c"); //remove element, remove index @ < index <
+         list.remove("b"); //remove element, remove index, and remove head @ size > 1
+         System.out.println(list);
+         list.insertSorted("b"); //insert sorted @ 0
+         list.insertSorted("d"); //insert sorted @ < index <
+         list.insertSorted("g"); //insert sorted @ end
+         System.out.println(list);
+         list.set(4, "f"); //set tail
+         list.addHead("b");
+         list.set(0, "a"); //set head
          System.out.println(list);
          list.remove(2);
-         list.remove(0);
          System.out.println(list);
-         list.insertSorted("a");
-         list.insertSorted("c");
-         list.insertSorted("f");
-         System.out.println(list);
-         list.set(4, "e");
+         list.insertSorted("b");
+         list.set(2, "c"); //set @ < index <
          System.out.println(list);
     }
 }

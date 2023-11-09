@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
  * My version of a Linked List data structure
  *
  * @author Chad Sawyer
- * @version 10/24/2023
+ * @version 11/09/2023
  */
 public class MyLinkedList<E extends Comparable<E>> 
 {
@@ -31,20 +31,19 @@ public class MyLinkedList<E extends Comparable<E>>
             throw new NoSuchElementException();
         }
         
-        if (index == size)
-        {
+        if (index == size) {
             add(element);
-        } else if (index == 0)
-        {
+        } else if (index == 0) {
             addHead(element);
         } else {
-            Node<E> currNode = finder(index - 1);   
+            Node<E> currNode = getNode(index - 1);   
             Node<E> newNode = new Node<E>(element);
             size++;
             currNode.getNext().setPrev(newNode);
             newNode.setNext(currNode.getNext());
             currNode.setNext(newNode);
             newNode.setPrev(currNode);
+            integrityCheck();
         }
     }
     
@@ -59,11 +58,7 @@ public class MyLinkedList<E extends Comparable<E>>
         if (head == null) {
             addHead(data);
         } else {
-            Node<E> newNode = new Node<E>(data);
-            size++;
-            newNode.setPrev(tail);
-            tail.setNext(newNode); 
-            tail = newNode;
+            addTail(data);
         }
     }
     
@@ -74,7 +69,16 @@ public class MyLinkedList<E extends Comparable<E>>
      * @return    void
      */
     public void addTail(E data) {
-        add(data);
+        if (head == null) {
+            addHead(data);
+        } else {
+            Node<E> newNode = new Node<E>(data);
+            size++;
+            tail.setNext(newNode);
+            newNode.setPrev(tail);
+            tail = newNode;
+            integrityCheck();
+        }
     }
     
     /**
@@ -95,11 +99,8 @@ public class MyLinkedList<E extends Comparable<E>>
             newNode.setNext(head);
             head.setPrev(newNode);
             head = newNode;
-            if (size == 2)
-            {
-                tail = head.getNext();
-            }
         }
+        integrityCheck();
     }
     
     /**
@@ -120,7 +121,7 @@ public class MyLinkedList<E extends Comparable<E>>
         } else if (index == 0) {
             head.setData(element);
         } else {
-            finder(index).setData(element);
+            getNode(index).setData(element);
         }
     }
     
@@ -183,7 +184,7 @@ public class MyLinkedList<E extends Comparable<E>>
         } else if (index == 0) {
             return head.getData();
         } else {  
-            return finder(index).getData();
+            return getNode(index).getData();
         }
     }
     
@@ -199,30 +200,24 @@ public class MyLinkedList<E extends Comparable<E>>
             throw new NoSuchElementException();
         }
         
-        if (index == 0){
+        if (index == 0) {
             return removeHead();
         } else if (index == size - 1) {
-            Node<E> currNode = head;
-            Node<E> remove = tail;
-            
-            for (int i = 0; i < index - 1; i++) {
-                currNode = currNode.getNext();
-            }
+            E remove = tail.getData();
+            Node<E> currNode = tail.getPrev();
             currNode.setNext(null);
             tail = currNode;
             size--;
-            return remove.getData();
+            integrityCheck();
+            return remove;
         } else {
-            Node<E> currNode = head;
-            
-            for (int i = 0; i < index - 1; i++) {
-                currNode = currNode.getNext();
-            }
-            Node<E> remove = currNode.getNext();
-            currNode.getNext().getNext().setPrev(currNode);
-            currNode.setNext(currNode.getNext().getNext());
+            Node<E> currNode = getNode(index);
+            E remove = currNode.getData();
+            currNode.getPrev().setNext(currNode.getNext());
+            currNode.getNext().setPrev(currNode.getPrev());
             size--;
-            return remove.getData();
+            integrityCheck();
+            return remove;
         }
     }
     
@@ -257,11 +252,13 @@ public class MyLinkedList<E extends Comparable<E>>
             head = head.getNext();
             head.setPrev(null);
             size--;
+            integrityCheck();
             return removed;
         } else {
             head = null;
-            head.setPrev(null);
+            tail = null;
             size--;
+            integrityCheck();
             return removed;
         }
     }   
@@ -284,7 +281,7 @@ public class MyLinkedList<E extends Comparable<E>>
         return size;
     }
     
-    public Node<E> finder(int index) {
+    private Node<E> getNode(int index) {
         if (index < (size / 2)) {
             Node<E> currNode = head;
             for (int i = 0; i < index; i++) {
@@ -297,6 +294,38 @@ public class MyLinkedList<E extends Comparable<E>>
                 currNode = currNode.getPrev();
             }
             return currNode;
+        }
+    }
+    
+    public void integrityCheck()
+    {
+        int count = 0;
+        if (head != null) {
+            count++;
+        }
+        if (size > 1) {
+            if (head.getNext() != getNode(1) && getNode(1).getPrev() != head) {
+                System.out.println("Nodes not paired");
+                return;
+            }
+            count++;
+            for (int i = 1; i < size - 2; i++) {
+                if (getNode(i).getPrev() != getNode(i + 1) && 
+                        getNode(i + 1).getPrev() != getNode(i)) {
+                    System.out.println("Nodes not paired");
+                    return;
+                }
+                count++;
+            }
+            
+            if (tail.getPrev() != getNode(size - 2) && getNode(size - 2).getPrev() != tail) {
+                System.out.println("Nodes not paired");
+                return;
+            }
+        }
+        if (count != size) {
+            System.out.println("Incorrect size: " + size + " " + count);
+            return;
         }
     }
     
