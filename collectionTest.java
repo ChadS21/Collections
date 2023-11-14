@@ -253,4 +253,27 @@ public class collectionTest
          list.set(2, "c"); //set @ < index <
          System.out.println(list);
     }
+    
+    public void binarySearchTreeTest() {
+        BinaryTreeNode<String> node1 = new BinaryTreeNode<String>("m");
+        node1.insert("x");
+        node1.insert("y");
+        node1.insert("a");
+        System.out.println(node1.getLeft().getData() + node1.getData() +
+            node1.getRight().getData() + node1.getRight().getRight().getData());
+        
+        BinarySearchTree<String> tree = new BinarySearchTree<String>();
+        
+        tree.insert("m");
+        tree.insert("r");
+        tree.insert("h");
+        tree.insert("f");
+        tree.insert("y");
+        tree.insert("z");
+        tree.insert("a");
+        
+        System.out.println(tree.getMax());
+        System.out.println(tree.getMin());
+        System.out.println(tree.search("f"));
+    }
 }
