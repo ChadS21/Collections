@@ -6,7 +6,7 @@
  */
 public class BinaryTreeNode<E extends Comparable<E>>
 {
-    // instance variables - replace the example below with your own
+
     private E data;
     private BinaryTreeNode<E> left;
     private BinaryTreeNode<E> right;
@@ -53,31 +53,13 @@ public class BinaryTreeNode<E extends Comparable<E>>
     }
     
     public E remove(E element) {
-        if (left.getData() == element) {
-            if (left.getLeft() == null && left.getRight() == null) {
-                left = null;
-                return element;
+        if (data == element) {
+            if (left != null && right != null){
+               data = left.remove(left.getMax()); 
+               
+               return element;
             }
-            if (left != null && right != null) {
-                data = remove(left.getMax());
                 
-            } else {
-                
-            }
-            
-        }
-        if (right.getData() == element) {
-            if (right.getLeft() == null && right.getRight() == null) {
-                right = null;
-                return element;
-            }
-            if (left != null && right != null) {
-                data = remove(left.getMax());
-                
-            } else {
-                
-            }
-            
         }
         if (element.compareTo(data) <= 0) {
             return left.remove(element);
