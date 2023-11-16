@@ -264,14 +264,18 @@ public class collectionTest
         
         BinarySearchTree<String> tree = new BinarySearchTree<String>();
         
-        tree.insert("m");
-        tree.insert("r");
-        tree.insert("h");
-        tree.insert("f");
-        tree.insert("y");
-        tree.insert("z");
-        tree.insert("a");
-        
+        tree.insert("m"); //1
+        tree.insert("r"); //2
+        tree.insert("h"); //2
+        tree.insert("f"); //3
+        tree.insert("y"); //3
+        tree.insert("z"); //4
+        tree.insert("a"); //4
+        //tree.insert("g"); //4
+        tree.insert("b"); //5
+
+        System.out.println(tree);
+        System.out.println(tree.getDepth());
         System.out.println(tree.getMax());
         System.out.println(tree.getMin());
         System.out.println(tree.search("f"));

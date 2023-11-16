@@ -21,7 +21,7 @@ public class BinaryTreeNode<E extends Comparable<E>>
     }
     
     public void insert(E element) {
-        if (element.compareTo(data) < 0) {
+        if (element.compareTo(data) <= 0) {
             if (left == null) {
                 left = new BinaryTreeNode<E>(element);
             } else {
@@ -52,6 +52,74 @@ public class BinaryTreeNode<E extends Comparable<E>>
         return null;
     }
     
+    public E remove(E element) {
+        if (left.getData() == element) {
+            if (left.getLeft() == null && left.getRight() == null) {
+                left = null;
+                return element;
+            }
+            if (left != null && right != null) {
+                data = remove(left.getMax());
+                
+            } else {
+                
+            }
+            
+        }
+        if (right.getData() == element) {
+            if (right.getLeft() == null && right.getRight() == null) {
+                right = null;
+                return element;
+            }
+            if (left != null && right != null) {
+                data = remove(left.getMax());
+                
+            } else {
+                
+            }
+            
+        }
+        if (element.compareTo(data) <= 0) {
+            return left.remove(element);
+        }
+        else {
+            return right.remove(element);
+        }
+    }
+    
+    public E getMin() {
+        if (left == null) {
+            return data;
+        } else {
+            return left.getMin();
+        }
+    }
+    
+    public E getMax() {
+        if (right == null) {
+            return data;
+        } else {
+            return right.getMax();
+        }
+    }
+    
+    public int getDepth() {
+        int leftCount = 0;
+        int rightCount = 0;
+        if (left != null) {
+            leftCount += left.getDepth();
+        }
+        if (right != null) {
+            rightCount += right.getDepth();
+        }
+        
+        if (leftCount >= rightCount) {
+            return 1 + leftCount;
+        } else {
+            return 1 + rightCount;
+        }
+    }
+    
     public E getData() {
         return data;
     }
@@ -74,5 +142,17 @@ public class BinaryTreeNode<E extends Comparable<E>>
     
     public void setRight(BinaryTreeNode<E> right) {
         this.right = right;
+    }
+    
+    public String toString() {
+        String str = "";
+        if (left != null) {
+            str += left.toString() + ", ";
+        }
+        str += data;
+        if (right != null) {
+            str += ", " + right.toString();
+        }
+        return str;
     }
 }
