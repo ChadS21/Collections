@@ -48,7 +48,22 @@ public class BinarySearchTree<E extends Comparable<E>>
         if (search(element) == null) {
             throw new NoSuchElementException();
         }
-        return root.remove(element);
+        root.remove(element);
+        return element;
+    }
+    
+    public E removeMin() throws NoSuchElementException {
+        if (getMin() == null) {
+            throw new NoSuchElementException();
+        }
+        return remove(getMin());
+    }
+    
+    public E removeMax() throws NoSuchElementException {
+        if (getMax() == null) {
+            throw new NoSuchElementException();
+        }
+        return remove(getMax());
     }
     
     public E getMin() {
