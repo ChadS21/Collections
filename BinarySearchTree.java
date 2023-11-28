@@ -1,4 +1,3 @@
-import java.util.NoSuchElementException;
 /**
  * Write a description of class BinarySearchTree here.
  *
@@ -44,24 +43,24 @@ public class BinarySearchTree<E extends Comparable<E>>
         return root.search(element);
     }
     
-    public E remove(E element) throws NoSuchElementException {
+    public E remove(E element) {
         if (search(element) == null) {
-            throw new NoSuchElementException();
+            return null;
         }
         root.remove(element);
         return element;
     }
     
-    public E removeMin() throws NoSuchElementException {
+    public E removeMin() {
         if (getMin() == null) {
-            throw new NoSuchElementException();
+            return null;
         }
         return remove(getMin());
     }
     
-    public E removeMax() throws NoSuchElementException {
+    public E removeMax() {
         if (getMax() == null) {
-            throw new NoSuchElementException();
+            return null;
         }
         return remove(getMax());
     }

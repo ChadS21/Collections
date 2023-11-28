@@ -25,13 +25,13 @@ public class BinaryTreeNode<E extends Comparable<E>>
             if (left == null) {
                 left = new BinaryTreeNode<E>(element);
             } else {
-                getLeft().insert(element);
+                left.insert(element);
             }
         } else {
             if (right == null) {
                 right = new BinaryTreeNode<E>(element);
             } else {
-                getRight().insert(element);
+                right.insert(element);
             }
         }
     }
@@ -64,7 +64,9 @@ public class BinaryTreeNode<E extends Comparable<E>>
                 return right;
             }
             else if (left != null && right != null) {
-                return removeMin();
+                data = left.getMax();
+                left = left.removeMax();
+                return this;
             }
         }
         if (element.compareTo(data) <= 0) {
