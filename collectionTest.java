@@ -279,5 +279,7 @@ public class collectionTest
         System.out.println(tree.getMax());
         System.out.println(tree.getMin());
         System.out.println(tree.search("f"));
+        tree.remove("b");
+        System.out.println(tree);
     }
 }
