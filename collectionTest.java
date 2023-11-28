@@ -274,8 +274,11 @@ public class collectionTest
         //tree.insert("g"); //4
         tree.insert("b"); //5
 
-        System.out.println(tree);
+        tree.printTree();
         tree.remove("m");
-        System.out.println(tree);
+        //tree.remove("a");
+        //tree.remove("r");
+        //tree.remove("h");
+        tree.printTree();
     }
 }
