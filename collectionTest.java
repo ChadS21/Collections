@@ -255,13 +255,6 @@ public class collectionTest
     }
     
     public void binarySearchTreeTest() {
-        BinaryTreeNode<String> node1 = new BinaryTreeNode<String>("m");
-        node1.insert("x");
-        node1.insert("y");
-        node1.insert("a");
-        System.out.println(node1.getLeft().getData() + node1.getData() +
-            node1.getRight().getData() + node1.getRight().getRight().getData());
-        
         BinarySearchTree<String> tree = new BinarySearchTree<String>();
         
         tree.insert("m"); //1
