@@ -274,4 +274,15 @@ public class collectionTest
         //tree.remove("h");
         tree.printTree();
     }
+    
+    public void heapTest() {
+        MyHeap<String> heap = new MyHeap<String>();
+        
+        heap.add("A");
+        heap.add("C");
+        heap.add("H");
+        heap.add("R");
+        
+        heap.printTree(6);
+    }
 }
