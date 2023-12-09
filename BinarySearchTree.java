@@ -1,8 +1,8 @@
 /**
- * Write a description of class BinarySearchTree here.
+ * My version of a Binary Search Tree
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Chad Sawyer
+ * @version 12/9/23
  */
 public class BinarySearchTree<E extends Comparable<E>> 
 {

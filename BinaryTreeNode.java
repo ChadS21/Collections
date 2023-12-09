@@ -1,8 +1,8 @@
 /**
- * Write a description of class BinaryTreeNode here.
+ * My version of a Binary Tree Node
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Chad Sawyer
+ * @version 12/9/23
  */
 public class BinaryTreeNode<E extends Comparable<E>>
 {
