@@ -19,10 +19,10 @@ public class BinarySearchTree<E extends Comparable<E>>
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * If the tree is empty, sets the root to the new node, otherwise calls
+     * the Binary Tree Node insert method and increments size
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  element the data to be added
      */
     public void insert(E element)
     {
@@ -35,6 +35,13 @@ public class BinarySearchTree<E extends Comparable<E>>
         size++;
     }
     
+    /**
+     * If the tree is empty, returns null, otherwise calls
+     * the Binary Tree Node search method
+     *
+     * @param  element the data to be searched
+     * @return the element searched if found
+     */
     public E search(E element)
     {
         if (isEmpty()) {
@@ -43,6 +50,13 @@ public class BinarySearchTree<E extends Comparable<E>>
         return root.search(element);
     }
     
+    /**
+     * If the element is not found, returns null, otherwise calls the Node
+     * remove method and subtracts size
+     *
+     * @param  element the data to be removed
+     * @return the deleted element
+     */
     public E remove(E element) {
         if (search(element) == null) {
             return null;
@@ -52,6 +66,11 @@ public class BinarySearchTree<E extends Comparable<E>>
         return element;
     }
     
+    /**
+     * If there is a minimum value, calls remove on this value
+     *
+     * @return the deleted element
+     */
     public E removeMin() {
         if (getMin() == null) {
             return null;
@@ -59,6 +78,11 @@ public class BinarySearchTree<E extends Comparable<E>>
         return remove(getMin());
     }
     
+    /**
+     * If there is a maximum value, calls remove on this value
+     *
+     * @return the deleted element
+     */
     public E removeMax() {
         if (getMax() == null) {
             return null;
@@ -66,6 +90,11 @@ public class BinarySearchTree<E extends Comparable<E>>
         return remove(getMax());
     }
     
+    /**
+     * If there is a minimum value, returns it
+     *
+     * @return the tree's smallest value
+     */
     public E getMin() {
         if (isEmpty()) {
             return null;
@@ -74,6 +103,11 @@ public class BinarySearchTree<E extends Comparable<E>>
         }
     }
     
+    /**
+     * If there is a maximum value, returns it
+     *
+     * @return the tree's largest value
+     */
     public E getMax() {
         if (isEmpty()) {
             return null;

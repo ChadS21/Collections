@@ -20,6 +20,12 @@ public class BinaryTreeNode<E extends Comparable<E>>
         right = null;
     }
     
+    /**
+     * Traverses the tree until finding the correct place to insert the new
+     * node
+     *
+     * @param  element the data to be added
+     */
     public void insert(E element) {
         if (element.compareTo(data) <= 0) {
             if (left == null) {
@@ -36,6 +42,12 @@ public class BinaryTreeNode<E extends Comparable<E>>
         }
     }
     
+    /**
+     * Traverses the tree until finding the element, if not found, returns null
+     *
+     * @param  element the data to be searched
+     * @return the element searched if found
+     */
     public E search(E element)
     {
         if (element == data) {
@@ -52,6 +64,13 @@ public class BinaryTreeNode<E extends Comparable<E>>
         return null;
     }
     
+    /**
+     * Traverses the list until finding the right element and removes. If
+     * removing the root, replaces the root with the minimum Node
+     *
+     * @param  element the data to be removed
+     * @return the deleted element
+     */
     public BinaryTreeNode<E> remove(E element) {
         if (data.equals(element)) {
             if (left == null && right == null) {
@@ -79,14 +98,29 @@ public class BinaryTreeNode<E extends Comparable<E>>
         }
     }
 
+    /**
+     * Removes the minimum value in the tree
+     *
+     * @return the deleted element
+     */
     public BinaryTreeNode<E> removeMin() {
         return remove(getMin());
     }
     
+    /**
+     * Removes the maximum value in the tree
+     *
+     * @return the deleted element
+     */
     public BinaryTreeNode<E> removeMax() {
         return remove(getMax());
     }
     
+    /**
+     * Returns the minimum value in the tree
+     *
+     * @return the tree's largest value
+     */
     public E getMin() {
         if (left == null) {
             return data;
@@ -95,6 +129,11 @@ public class BinaryTreeNode<E extends Comparable<E>>
         }
     }
     
+    /**
+     * Returns the maximum value in the tree
+     *
+     * @return the tree's largest value
+     */
     public E getMax() {
         if (right == null) {
             return data;
@@ -103,6 +142,11 @@ public class BinaryTreeNode<E extends Comparable<E>>
         }
     }
     
+    /**
+     * Returns the amount of layers in the tree
+     *
+     * @return depth of the tree
+     */
     public int getDepth() {
         int leftCount = 0;
         int rightCount = 0;
