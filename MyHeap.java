@@ -27,25 +27,28 @@ public class MyHeap<E extends Comparable<E>>
      */
     public void add(E element)
     {
+        if (last == heap.length - 1) {
+            heap = Arrays.copyOf(heap, heap.length * 2);
+        }
         if (isEmpty()) {
             heap[0] = element;
             last++;
         }
         else {
             heap[last + 1] = element;
-            int i = last + 1;
-            while (i > 0) {
-                if (heap[i].compareTo(heap[(i / 2) - 1]) < 0) {
+            last++;
+            int i = last;
+            while ((i - 1) / 2 >= 0) {
+                if (heap[i].compareTo(heap[(i - 1) / 2]) <= 0) {
                     E temp = heap[i];
-                    heap[i] = heap[(i / 2) - 1];
-                    heap[(i / 2) - 1] = temp;
-                    i = (i / 2) - 1;
+                    heap[i] = heap[(i - 1) / 2];
+                    heap[(i - 1) / 2] = temp;
+                    i = (i - 1) / 2;
                 }
                 else {
-                    i = 0;
+                    return;
                 }
             }
-            last++;
         }
     }
     
@@ -57,7 +60,30 @@ public class MyHeap<E extends Comparable<E>>
     }
     
     public E removeMin() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        E removed = heap[0];
+        heap[0] = heap[last];
+        heap[last] = null;
+        last--;
+        int i = 0;
+        while ((i * 2) + 1 <= last && (i * 2) + 2 <= last) {
+            int compare = heap[(i * 2) + 1].compareTo(heap[(i * 2) + 2]);
+            if (compare < 0) {
+                E temp = heap[i];
+                heap[i] = heap[(i * 2) + 1];
+                heap[(i * 2) + 1] = temp;
+                i = (i * 2) + 1;
+            }
+            else {
+                E temp = heap[i];
+                heap[i] = heap[(i * 2) + 2];
+                heap[(i * 2) + 2] = temp;
+                i = (i * 2) + 2;
+            }
+        }
+        return removed;
     }
     
     public boolean isEmpty() {

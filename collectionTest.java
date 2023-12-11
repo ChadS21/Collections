@@ -284,5 +284,19 @@ public class collectionTest
         heap.add("R");
         
         heap.printTree(6);
+        System.out.println();
+        
+        heap.add("Z");
+        
+        heap.printTree(6);
+        System.out.println();
+        
+        heap.add("B");
+        
+        heap.printTree(6);
+        System.out.println();
+        
+        heap.removeMin();
+        heap.printTree(6);
     }
 }
